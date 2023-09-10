@@ -1,0 +1,3 @@
+require {
+  github.com/DarinM223/generic 0.0.7 #5c4c092658240a14177ba2e2fdd5276c9b167407
+}
