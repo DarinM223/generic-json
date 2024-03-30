@@ -1,0 +1,14 @@
+$(SML_LIB)/basis/basis.mlb
+$(SML_LIB)/smlnj-lib/Util/smlnj-lib.mlb
+$(SML_LIB)/smlnj-lib/JSON/json-lib.mlb
+ann "milletDiagnosticsIgnore all" in
+  ../lib/github.com/DarinM223/extended-basis/basis.mlb
+  ../lib/github.com/DarinM223/generic/lib-all.mlb
+end
+../generic-json.mlb
+(* Include our modification to the Generic signature and structure *)
+../with/to-json.sml
+(* Don't forget to close the Generic with the extra cases again after *)
+../lib/github.com/DarinM223/generic/with/close-pretty-with-extra.sml
+
+example.sml

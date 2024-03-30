@@ -3,3 +3,5 @@ version = 1
 root = "generic-json.mlb"
 [diagnostics]
 5043.severity = "ignore"
+5034.severity = "ignore"
+3007.severity = "ignore"

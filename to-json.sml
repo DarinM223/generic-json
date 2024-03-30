@@ -10,7 +10,9 @@ sig
   sharing Open.Rep = ToJSONRep
 end
 
-functor WithToJSON(Arg: CASES): TO_JSON_CASES =
+signature WITH_TO_JSON_DOM = CASES
+
+functor WithToJSON(Arg: WITH_TO_JSON_DOM): TO_JSON_CASES =
 struct
   structure ToJSONRep =
     LayerRep
@@ -34,7 +36,7 @@ struct
        fun C1 con aT a =
          JSON.OBJECT
            [("tag", JSON.STRING (Generics.Con.toString con)), ("value", aT a)]
-       fun op--> ? = raise Fail "--> not defined for ToJSON"
+       fun op--> _ = raise Fail "--> not defined for ToJSON"
        fun T f a = f a
        fun R _ f a = f a
        val Y = Tie.function
