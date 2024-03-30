@@ -1,4 +1,9 @@
 Group is
-  $/basis.cm
   $/smlnj-lib.cm
   $/json-lib.cm
+  lib/github.com/DarinM223/extended-basis/basis.cm
+  lib/github.com/DarinM223/generic/lib-all.cm
+  to-json.sig
+  to-json.sml
+  from-json.sig
+  from-json.sml

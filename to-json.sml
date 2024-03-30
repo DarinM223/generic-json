@@ -44,7 +44,7 @@ struct
        val fixedInt = fn _ => raise Fail "fixedInt not defined for ToJSON"
        val largeInt = fn _ => raise Fail "largeInt not defined for ToJSON"
        val largeWord = fn _ => raise Fail "largeWord not defined for ToJSON"
-       fun hole () _ = JSON.NULL
+       fun hole () _ = raise Fail "hole not defined for ToJSON"
        fun refc f (ref a) = f a
        fun data f a = f a
        fun tuple f a = f a
