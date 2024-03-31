@@ -144,11 +144,10 @@ struct
   val outstream = TextIO.openOut tmpFileName
   val json = Generic.toJson (Generic.list stmt) testStmt
 
-  (* MLton's version of smlnj-lib has a buggy JSONParser so this doesn't work. *)
-  (* val () = JSONPrinter.print (outstream, json)
-  val () = TextIO.output (outstream, "\n")
+  val () = JSONPrinter.print (outstream, json)
+  val () = TextIO.closeOut outstream
   val file = JSONParser.openFile tmpFileName
-  val json = JSONParser.parse file *)
+  val json = JSONParser.parse file
 
   val testStmt = Option.valOf (Generic.fromJson (Generic.list stmt) json)
   val () = print (Generic.show (Generic.list stmt) testStmt)
