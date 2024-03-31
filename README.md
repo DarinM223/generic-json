@@ -4,7 +4,7 @@ generic-json
 Automatic JSON serialization and deserialization from type indexed values.
 
 See the `example/` folder for an example for how to use the library. The type indexed value
-representations in `example.sml` were automatically generated using [smlgen](https://github.com/DarinM223/smlgen).
+representations in `example.sml` were generated using [smlgen](https://github.com/DarinM223/smlgen).
 
 Building
 --------
