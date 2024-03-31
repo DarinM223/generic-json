@@ -137,5 +137,16 @@ val testStmt: stmt list =
   , If (Int 1, [Assign ("y", Int 1)], [Assign ("z", Int 2)])
   ]
 
-val () = JSONPrinter.print' {strm = TextIO.stdOut, pretty = true}
-  (Generic.toJson (Generic.list stmt) testStmt)
+val tmpFileName = "tmp.txt"
+val outstream = TextIO.openOut tmpFileName
+val json = Generic.toJson (Generic.list stmt) testStmt
+
+(* MLton's version of smlnj-lib has a buggy JSONParser so this doesn't work. *)
+(* val () = JSONPrinter.print (outstream, json)
+val () = TextIO.output (outstream, "\n")
+val file = JSONParser.openFile tmpFileName
+val json = JSONParser.parse file *)
+
+val testStmt = Option.valOf (Generic.fromJson (Generic.list stmt) json)
+val () = print (Generic.show (Generic.list stmt) testStmt)
+val () = print "\n"
