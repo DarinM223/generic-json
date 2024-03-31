@@ -1,7 +1,7 @@
 signature FROM_JSON =
 sig
   structure FromJSONRep: OPEN_REP
-  val fromJson: ('a, 'b) FromJSONRep.t -> JSON.value -> 'a
+  val fromJson: ('a, 'b) FromJSONRep.t -> JSON.value -> 'a option
 end
 
 signature FROM_JSON_CASES =
