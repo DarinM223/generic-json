@@ -1,9 +1,16 @@
-Group is
+library
+  signature TO_JSON
+  signature TO_JSON_CASES
+  signature FROM_JSON
+  signature FROM_JSON_CASES
+  functor WithFromJSON
+  functor WithToJSON
+is
   $/smlnj-lib.cm
   $/json-lib.cm
   lib/github.com/DarinM223/extended-basis/basis.cm
-  lib/github.com/DarinM223/generic/lib-all.cm
+  lib/github.com/DarinM223/generic/lib.cm
   to-json.sig
-  to-json.sml
+  to-json.fun
   from-json.sig
-  from-json.sml
+  from-json.fun

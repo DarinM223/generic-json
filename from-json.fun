@@ -1,6 +1,6 @@
 functor WithFromJSON(Arg: WITH_FROM_JSON_DOM): FROM_JSON_CASES =
 struct
-  structure Option =
+  structure OptionUtils =
   struct
     open Option
     fun op>>= (SOME a, f) = f a
@@ -18,13 +18,14 @@ struct
 
   structure Open =
     LayerCases
-      (infix & >>=
+      (open TopLevel
+       infix & >>=
        fun iso f (_, a2b) = Option.map a2b o f
        fun isoProduct f (_, c2a) = Option.map c2a o f
        fun isoSum f (_, b2a) = Option.map b2a o f
 
        fun op*` (aT, bT) (JSON.ARRAY [a, b]) =
-             let open Option
+             let open OptionUtils
              in aT a >>= (fn a => bT b >>= (fn b => SOME (a & b)))
              end
          | op*` _ _ = NONE
@@ -63,7 +64,7 @@ struct
        fun list f (JSON.ARRAY vs) =
              (List.foldr
                 (fn (e, acc) =>
-                   let open Option
+                   let open OptionUtils
                    in acc >>= (fn acc => f e >>= (fn e => SOME (e :: acc)))
                    end) (SOME []) vs)
          | list _ _ = NONE
@@ -74,7 +75,7 @@ struct
        fun int (JSON.INT i) =
              SOME (Int.fromLarge i)
          | int _ = NONE
-       val word32 = word
+       val word32 = Option.map Word32.fromWord o word
        val word8 = Option.map Word8.fromWord o word
        val largeReal = Option.map Real.toLarge o real
        val fixedInt = fn _ => raise Fail "fixedInt not defined for FromJSON"

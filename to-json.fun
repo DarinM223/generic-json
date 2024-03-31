@@ -9,7 +9,8 @@ struct
   val toJson = ToJSONRep.This.getT
   structure Open =
     LayerCases
-      (infix &
+      (open TopLevel
+       infix &
        fun iso f (b2a, _) = f o b2a
        fun isoProduct f (c2a, _) = f o c2a
        fun isoSum f (b2a, _) = f o b2a
@@ -38,7 +39,7 @@ struct
        fun list f = JSON.ARRAY o List.map f
        val real = JSON.FLOAT
        val int = JSON.INT o Int.toLarge
-       val word32 = word
+       val word32 = word o Word32.toWord
        val word8 = word o Word8.toWord
        val largeReal = JSON.FLOAT o Real.fromLarge IEEEReal.TO_NEAREST
        val fixedInt = fn _ => raise Fail "fixedInt not defined for ToJSON"

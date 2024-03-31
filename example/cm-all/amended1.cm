@@ -1,0 +1,14 @@
+group
+  group(../../lib/github.com/DarinM223/generic/cm-all/amended8.cm) - (
+    signature Generic
+    structure Generic
+    functor MkGeneric
+  )
+  library(../../generic-json.cm)
+  signature Generic
+  structure Generic
+  functor MkGeneric
+is
+  ../../lib/github.com/DarinM223/generic/cm-all/amended8.cm
+  ../../generic-json.cm
+  ../../with/from-json.sml

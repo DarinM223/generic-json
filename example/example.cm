@@ -1,0 +1,6 @@
+group source(-) is
+  $/smlnj-lib.cm
+  $/json-lib.cm
+  ../lib/github.com/DarinM223/extended-basis/basis.cm
+  cm-all/amended3.cm
+  example.sml
